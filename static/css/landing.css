@@ -1,0 +1,205 @@
+/* ------------------------------------------------------------------ */
+/* Landing hero — overrides the base hero rules in style.css           */
+/* ------------------------------------------------------------------ */
+
+.hero {
+    display: block;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem 5rem;
+    text-align: center;
+    --hero-green: #3d8b62;
+}
+
+.hero-inner {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+/* Badge -------------------------------------------------------------- */
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #dff0e5;
+    color: var(--hero-green);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 0.55rem 1.25rem;
+    border-radius: 999px;
+    margin-bottom: 2.25rem;
+}
+
+.hero-badge::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--hero-green);
+}
+
+/* Headline ----------------------------------------------------------- */
+
+.hero-title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 5.6vw, 4rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+}
+
+.hero-title .hero-title-accent {
+    display: block;
+    color: var(--hero-green);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    max-width: 620px;
+    margin: 0 auto 2.75rem;
+}
+
+/* Actions ------------------------------------------------------------ */
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.hero-actions .hero-btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper-card);
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 1rem 1.9rem;
+    border: none;
+    border-radius: 10px;
+    transition: opacity 0.2s;
+}
+
+.hero-actions .hero-btn:hover { opacity: 0.85; }
+
+/* Preview panel ------------------------------------------------------ */
+
+.hero-preview {
+    max-width: 1000px;
+    margin: 4rem auto 0;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: left;
+}
+
+.preview-dots {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.preview-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.preview-dots span:nth-child(1) { background: #e88a8a; }
+.preview-dots span:nth-child(2) { background: #e8c46a; }
+.preview-dots span:nth-child(3) { background: #8fcba8; }
+
+.preview-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.preview-stat {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+}
+
+.preview-stat-label {
+    font-size: 1rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.5rem;
+}
+
+.preview-stat-value {
+    font-family: var(--font-body);
+    font-size: 1.9rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+}
+
+.preview-stat-note { font-size: 0.95rem; color: var(--ink-faint); }
+.preview-stat-note.is-up { color: #c0392b; }
+.preview-stat-note.is-good { color: var(--hero-green); }
+
+/* Category bars ------------------------------------------------------ */
+
+.preview-bars {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.preview-bar-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.preview-bar-label {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    text-align: right;
+}
+
+.preview-bar-track {
+    height: 10px;
+    background: #ecebe5;
+    border-radius: 999px;
+}
+
+.preview-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.preview-bar-fill.is-food { background: #e8a33d; }
+.preview-bar-fill.is-travel { background: #4a90d9; }
+.preview-bar-fill.is-bills { background: #7b68c4; }
+
+/* Responsive --------------------------------------------------------- */
+
+@media (max-width: 860px) {
+    .hero { padding: 3rem 1.25rem 3.5rem; }
+    .hero-subtitle { font-size: 1.05rem; }
+    .preview-stats { grid-template-columns: 1fr; }
+    .hero-preview { margin-top: 2.5rem; }
+}
+
+@media (max-width: 520px) {
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .preview-bar-row { grid-template-columns: 70px 1fr; }
+}
