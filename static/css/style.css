@@ -507,6 +507,20 @@ a { color: inherit; text-decoration: none; }
     color: var(--ink-faint);
 }
 
+.footer-links {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 0.6rem;
+}
+
+.footer-links a {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--paper); }
+
 /* ------------------------------------------------------------------ */
 /* Responsive                                                          */
 /* ------------------------------------------------------------------ */
@@ -587,3 +601,13 @@ a { color: inherit; text-decoration: none; }
 .legal-list li {
     margin-bottom: 0.4rem;
 }
+
+.legal-list strong { color: var(--ink-soft); font-weight: 600; }
+
+.legal-body a {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-light);
+    transition: border-color 0.2s;
+}
+
+.legal-body a:hover { border-bottom-color: var(--accent); }
