@@ -3,7 +3,7 @@ import sqlite3
 from flask import Flask, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from database.db import get_db, get_user_by_email, init_db, seed_db
+from database.db import get_db, get_user_by_email, get_user_by_id, init_db, seed_db
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -11,6 +11,12 @@ app.secret_key = "dev"
 with app.app_context():
     init_db()
     seed_db()
+
+
+@app.context_processor
+def inject_current_user():
+    user_id = session.get("user_id")
+    return {"current_user": get_user_by_id(user_id) if user_id else None}
 
 
 # ------------------------------------------------------------------ #
