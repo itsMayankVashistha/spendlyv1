@@ -121,7 +121,43 @@ def logout():
 
 @app.route("/profile")
 def profile():
-    return "Profile page — coming in Step 4"
+    if not session.get("user_id"):
+        return redirect(url_for("login"))
+
+    stats = {
+        "total_spent": 280.53,
+        "transaction_count": 8,
+        "top_category": "Bills",
+    }
+
+    transactions = [
+        {"date": "2026-09-21", "description": "Restaurant dinner", "category": "Food", "amount": 22.30},
+        {"date": "2026-09-18", "description": "Miscellaneous", "category": "Other", "amount": 9.99},
+        {"date": "2026-09-14", "description": "New shoes", "category": "Shopping", "amount": 60.00},
+        {"date": "2026-09-11", "description": "Movie tickets", "category": "Entertainment", "amount": 15.75},
+        {"date": "2026-09-08", "description": "Pharmacy", "category": "Health", "amount": 25.00},
+        {"date": "2026-09-05", "description": "Electricity bill", "category": "Bills", "amount": 89.99},
+        {"date": "2026-09-03", "description": "Bus pass", "category": "Transport", "amount": 12.00},
+        {"date": "2026-09-02", "description": "Groceries", "category": "Food", "amount": 45.50},
+    ]
+
+    category_breakdown = [
+        {"category": "Bills", "total": 89.99, "percent": 32},
+        {"category": "Food", "total": 67.80, "percent": 24},
+        {"category": "Shopping", "total": 60.00, "percent": 21},
+        {"category": "Health", "total": 25.00, "percent": 9},
+        {"category": "Entertainment", "total": 15.75, "percent": 6},
+        {"category": "Transport", "total": 12.00, "percent": 4},
+        {"category": "Other", "total": 9.99, "percent": 4},
+    ]
+
+    return render_template(
+        "profile.html",
+        member_since="March 2026",
+        stats=stats,
+        transactions=transactions,
+        category_breakdown=category_breakdown,
+    )
 
 
 @app.route("/expenses/add")
